@@ -1,10 +1,8 @@
-from typing import List, Optional
-
 from nonebot import get_driver
-from pydantic import BaseSettings
+from pydantic import BaseModel
+from nonebot import get_plugin_config
 
-
-class Config(BaseSettings):
+class ConfigModel(BaseModel):
     reboot_load_command: bool = True
     reboot_grace_time_limit: int = 20
 
@@ -13,4 +11,5 @@ class Config(BaseSettings):
 
 
 global_config = get_driver().config
-plugin_config = Config(**global_config.dict())
+plugin_config = ConfigModel(**global_config.model_dump())
+config = get_plugin_config(ConfigModel)

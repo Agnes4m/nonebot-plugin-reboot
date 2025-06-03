@@ -1,28 +1,21 @@
-from .config import plugin_config, Config
-__plugin_name__ = "nonebot_plugin_reboot [重启 bot]"
-__plugin_des__ = "用命令重启机器人"
-__plugin_usage__ = ""
-__plugin_author__ = "18870 <a20110123@163.com>"
-__plugin_homepage__ = "https://github.com/18870/nonebot-plugin-reboot"
-
-try:
-    from nonebot.plugin import PluginMetadata
-    __plugin_meta__ = PluginMetadata(
-        name=__plugin_name__,
-        description=__plugin_des__,
-        usage=__plugin_usage__,
-        type="application",
-        homepage=__plugin_homepage__,
-        config=Config,
-        supported_adapters={"~onebot.v11"},
-        extra={
-            "author": __plugin_author__,
-        }
-    )
-except ImportError:
-    pass
-
+from .config import plugin_config, ConfigModel
+from nonebot.plugin import PluginMetadata
 from .reloader import Reloader
+
+__version__ = "0.1.2"
+__plugin_meta__ = PluginMetadata(
+    name="nonebot_plugin_reboot [重启 bot]",
+    description="用命令重启机器人",
+    usage="",
+    type="application",
+    homepage="https://github.com/18870/nonebot-plugin-reboot",
+    config=ConfigModel,
+    supported_adapters={"~onebot.v11"},
+    extra={
+        "version": __version__,
+        "author": ["18870 <a20110123@163.com>", "Agnes4m <Z735803792@163.com>"],
+    },
+)
 
 if plugin_config.reboot_load_command:
     from .command import reboot_matcher

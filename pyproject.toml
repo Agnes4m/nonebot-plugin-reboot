@@ -9,8 +9,8 @@ repository = "https://github.com/18870/nonebot-plugin-reboot"
 keywords = ["nonebot"]
 
 [tool.poetry.dependencies]
-python = "^3.7.3"
-nonebot2 = "^2.0.0-beta.2"
+python = ">=3.8.0,<4.0.0"
+nonebot2 = ">=2.1.0, <3.0.0"
 nonebot-adapter-onebot = { version = "^2.1.0", optional = true }
 
 [tool.poetry.dev-dependencies]
