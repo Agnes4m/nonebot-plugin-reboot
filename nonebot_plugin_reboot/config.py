@@ -11,5 +11,8 @@ class ConfigModel(BaseModel):
 
 
 global_config = get_driver().config
-plugin_config = ConfigModel(**global_config.model_dump())
+try:
+    plugin_config = ConfigModel(**global_config.model_dump())
+except AttributeError:
+    plugin_config = ConfigModel(**global_config.dict())
 config = get_plugin_config(ConfigModel)
